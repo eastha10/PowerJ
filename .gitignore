@@ -8,7 +8,7 @@ db.sqlite3
 *.log
 
 # Environment
-venv/*
+venv/
 .venv
 
 # VS Code
