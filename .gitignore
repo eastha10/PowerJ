@@ -8,8 +8,8 @@ db.sqlite3
 *.log
 
 # Environment
-venv/
-.env
+venv/*
+.venv
 
 # VS Code
 .vscode/
@@ -17,3 +17,4 @@ venv/
 # OS
 .DS_Store
 Thumbs.db
+venv/pyvenv.cfg
