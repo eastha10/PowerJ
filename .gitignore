@@ -9,11 +9,11 @@ db.sqlite3
 
 # Environment
 venv/
-.env
+.venv
 
 # VS Code
 .vscode/
 
 # OS
 .DS_Store
-Thumbs.db
+Thumbs.dbv
