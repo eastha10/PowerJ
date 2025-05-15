@@ -18,3 +18,5 @@ venv/*
 .DS_Store
 Thumbs.db
 venv/pyvenv.cfg
+
+Thumbs.dbv
