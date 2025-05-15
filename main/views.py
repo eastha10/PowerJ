@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 def home(request):
-    return HttpResponse("✅ 뷰는 정상 연결됨")
+    return render(request, 'home.html')
