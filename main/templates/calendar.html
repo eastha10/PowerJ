@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Calendar</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="{% static 'css/calendar.css' %}">
 </head>
 <body>
    <div class="calendar-header">
@@ -27,6 +28,6 @@
     <textarea id="schedule-input" placeholder="이 날의 일정을 적어보세요..."></textarea>
     <button id="save-button">저장</button>
   </div>
-	<script src="calendarScript.js"></script>
+	<script src="{% static 'js/calendar.js' %}"></script>
 </body>
 </html>
