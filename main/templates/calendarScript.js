@@ -26,35 +26,28 @@ function renderCalendar(year, month, selectedDay = null) {
   const lastDate = new Date(year, month + 1, 0).getDate();
 
   let date = 1;
-  for (let i = 0; i < 6; i++) { //todo - 날짜 따라서 동적 크기 할당당
+
+  let currentDay = 0; // 셀 수 세기
+
+  while (date <= lastDate) {
     const row = document.createElement("tr");
-    
 
     for (let j = 0; j < 7; j++) {
-      if (selectedDay === date) {
-        // 자동 선택
-        if (selectedCell) selectedCell.classList.remove("selected");
-        cell.classList.add("selected");
-        selectedCell = cell;
-
-        selectedDateTitle.textContent = `${year}년 ${month + 1}월 ${date}일 일정`;
-        scheduleInput.value = scheduleMap[key] || '';
-        selectedDateKey = key;
-      }
       const cell = document.createElement("td");
 
-      if (i === 0 && j < firstDay) {
+      if (currentDay < firstDay && date === 1) {
+        // 첫 주 빈 칸 채우기
         row.appendChild(cell);
+        currentDay++;
       } else if (date > lastDate) {
-        row.appendChild(cell);
+        row.appendChild(cell); // 마지막 주 빈 칸
       } else {
         const key = `${year}-${month + 1}-${date}`;
-        cell.textContent = date;
-        // const innerBox = document.createElement("div");
-        // innerBox.className = "date-box";
-        // innerBox.textContent = date;
-        // cell.appendChild(innerBox);
 
+        const innerBox = document.createElement("div");
+        innerBox.className = "date-box";
+        innerBox.textContent = date;
+        cell.appendChild(innerBox);
 
         const isToday =
           year === today.getFullYear() &&
@@ -67,24 +60,30 @@ function renderCalendar(year, month, selectedDay = null) {
           cell.style.backgroundColor = "#f0f0f0";
         }
 
-        // 날짜 클릭 이벤트
+        const thisDate = date;
+
         cell.onclick = () => {
           if (selectedCell) selectedCell.classList.remove("selected");
           cell.classList.add("selected");
           selectedCell = cell;
 
-          selectedDateTitle.textContent = `${year}년 ${month + 1}월 ${date}일`;
+          const key = `${year}-${month + 1}-${thisDate}`;
+          const selectedDateObj = new Date(year, month, thisDate);
+          const days = ["일", "월", "화", "수", "목", "금", "토"];
+          const weekday = days[selectedDateObj.getDay()];
+
+          selectedDateTitle.textContent = `${year}년 ${month + 1}월 ${thisDate}일 (${weekday})`;
           scheduleInput.value = scheduleMap[key] || '';
           selectedDateKey = key;
         };
-
         row.appendChild(cell);
         date++;
       }
     }
 
-    calendarBody.appendChild(row);
+  calendarBody.appendChild(row);
   }
+
 }
 
 document.getElementById("prev").onclick = () => {
