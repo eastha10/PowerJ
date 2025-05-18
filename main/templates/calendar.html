@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calendar</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="calendar-header">
+    <button id="prev">◀ 이전</button>
+    <h2 id="month-title"></h2>
+    <button id="next">다음 ▶</button>
+  </div>
+
+  <table class="calendar-table">
+    <thead>
+      <tr>
+        <th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>
+      </tr>
+    </thead>
+    <tbody id="calendar-body"></tbody>
+  </table>
+
+  <div class="schedule-container">
+    <h3 id="selected-date-title"></h3>
+    <textarea id="schedule-input" placeholder="이 날의 일정을 적어보세요..."></textarea>
+    <button id="save-button">저장</button>
+  </div>
+	<script src="calendarScript.js"></script>
+</body>
+</html>
